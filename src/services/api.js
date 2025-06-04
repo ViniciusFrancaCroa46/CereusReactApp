@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL:'http://localhost:8081',
+    baseURL:'http://localhost:8080',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -40,20 +40,20 @@ api.interceptors.response.use(
 
 // Cliente endpoint
 export const monitoramentoService = {
-    getSA: () => api.get('/sensores-agua'),
-    getSAbyId: (id) => api.get(`/sensores-agua/${id}`),
-    createSA: (data) => api.post('/registrar/sensores-agua', data),
-    updateSA: (id, data) => api.put(`/sensores-agua/${id}`, data),
-    deleteSA: (id) => api.delete(`/sensores-agua/${id}`),
-    getAlert: () => api.get('/alertas')
+    getSA: () => api.get('/monitoramento/sensores-agua'),
+    getSAbyId: (id) => api.get(`/monitoramento/sensores-agua/${id}`),
+    createSA: (data) => api.post('/monitoramento/registrar/sensores-agua', data),
+    updateSA: (id, data) => api.put(`/monitoramento/sensores-agua/${id}`, data),
+    deleteSA: (id) => api.delete(`/monitoramento/sensores-agua/${id}`),
+    getAlert: () => api.get('/monitoramento/alertas')
 };
 
 export const barreiraService = {
-    getBar: () => api.get('/barreira'),
-    getBarbyId: (id) => api.get(`/barreira/${id}`),
-    createBar: (data) => api.post('/registrar/barreira'),
-    updateBar: (id, data) => api.put(`/barreira/${id}`, data),
-    delete: (id) => api.delete(`/barreira/${id}`)
+    getBar: () => api.get('/monitoramento/barreira'),
+    getBarbyId: (id) => api.get(`/monitoramento/barreira/${id}`),
+    createBar: (data) => api.post('/monitoramento/registrar/barreira'),
+    updateBar: (id, data) => api.put(`/monitoramento/barreira/${id}`, data),
+    delete: (id) => api.delete(`/monitoramento/barreira/${id}`)
 };
 
 export default api;

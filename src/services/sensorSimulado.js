@@ -1,7 +1,7 @@
 let sensores = [
-  { nivelAgua: 0, temperatura: 0, umidade: 0 },
-  { nivelAgua: 0, temperatura: 0, umidade: 0 },
-  { nivelAgua: 0, temperatura: 0, umidade: 0 },
+  { id: 7, nivelAgua: 0, temperatura: 0, umidade: 0 },
+  { id: 8, nivelAgua: 0, temperatura: 0, umidade: 0 },
+  { id: 9, nivelAgua: 0, temperatura: 0, umidade: 0 },
 ];
 
 let intervalo = null;

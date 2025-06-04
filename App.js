@@ -1,26 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 import { StyleSheet } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 
-import MonitoramentoScreen from './screens/MonitoramentoScreen';
-import HomeScreen from './screens/HomeScreen';
-import AlertasScreen from './screens/AlertasScreen';
-import ControleScreen from './screens/ControleScreen';
-import HistoricoScreen from './screens/HistoricoScreen';
-
-const Stack = createNativeStackNavigator();
+import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Monitoramento" component={MonitoramentoScreen} />
-        <Stack.Screen name="Controle" component={ControleScreen} />
-        <Stack.Screen name="Alertas" component={AlertasScreen} />
-        <Stack.Screen name="Historico" component={HistoricoScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PaperProvider>
+      <AppNavigator/>
+    </PaperProvider>  
   );
 }
 

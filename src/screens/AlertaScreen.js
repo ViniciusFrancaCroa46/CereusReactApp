@@ -48,10 +48,10 @@ export default function AlertaScreen() {
       <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Status das Barreiras:</Text>
       <FlatList
         data={barreiras}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Text>
-            {item.nome} - {item.ativada ? 'Ativada' : 'Desativada'}
+            {item.id} - {item.ativada ? 'Ativada' : 'Desativada'}
           </Text>
         )}
       />
@@ -59,10 +59,10 @@ export default function AlertaScreen() {
       <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Resumo dos Sensores:</Text>
       <FlatList
         data={sensores}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Text>
-            Sensor {item.id}: {item.nivelAgua.toFixed(2)} m {item.nivelAgua > 5 ? '!' : ''}
+            Sensor {item.id}: {item.nivelAgua} m {item.nivelAgua > 5 ? '!' : ''}
           </Text>
         )}
       />

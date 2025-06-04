@@ -42,19 +42,19 @@ export default function ControleScreen() {
 
   return (
     <View style={{ padding: 20 }}>
-      <Button title="Iniciar Simulação" onPress={iniciarSimulacao} />
-      <Button title="Parar Simulação" onPress={pararSimulacao} />
-      <Button title="Enviar Dados ao Backend" onPress={enviarDados} />
+      <Button title="Iniciar Simulação" onPress={() => iniciarSimulacao()} />
+      <Button title="Parar Simulação" onPress={() => pararSimulacao()} />
+      <Button title="Enviar Dados ao Backend" onPress={() => enviarDados()} />
 
       <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Sensores:</Text>
       <FlatList
         data={sensores}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View>
             <Text>Sensor {item.id}</Text>
-            <Text>Nível: {item.nivelAgua.toFixed(2)} m {item.nivelAgua > 5 ? 'ALERTA!' : ''}</Text>
-            <Text>Temperatura: {item.temperatura.toFixed(1)} °C</Text>
+            <Text>Nível: {item.nivelAgua} m {item.nivelAgua > 5 ? 'ALERTA!' : ''}</Text>
+            <Text>Temperatura: {item.temperatura} °C</Text>
             <Text>Umidade: {item.umidade}%</Text>
           </View>
         )}
@@ -63,9 +63,9 @@ export default function ControleScreen() {
       <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Barreiras:</Text>
       <FlatList
         data={barreiras}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Text>{item.nome} - {item.ativada ? 'Ativada' : 'Desativada'}</Text>
+          <Text>{item.id} - {item.ativada ? 'Ativada' : 'Desativada'}</Text>
         )}
       />
     </View>

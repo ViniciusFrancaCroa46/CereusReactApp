@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../screens/HomeScreen';
 import MonitoramentoScreen from '../screens/MonitoramentoScreen';
+import ControleScreen from '../screens/ControleScreen';
 import AlertaScreen from '../screens/AlertaScreen';
 import HistoricoScreen from '../screens/HistoricoScreen';
 
@@ -35,13 +36,22 @@ const MainTabs = () => {
                 component={MonitoramentoScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="room" size={size} color={color} />
+                        <MaterialCommunityIcons name="radar" size={size} color={color} />
                     ),
                 }}
             />
             <Tab.Screen
                 name="Alertas"
                 component={AlertaScreen}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="alarm-light" size={size} color={color} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Controle"
+                component={ControleScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="devices" size={size} color={color} />
@@ -53,7 +63,7 @@ const MainTabs = () => {
                 component={HistoricoScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="account-group" size={size} color={color} />
+                        <MaterialCommunityIcons name="history" size={size} color={color} />
                     ),
                 }}
             />

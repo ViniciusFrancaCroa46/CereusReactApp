@@ -25,12 +25,12 @@ export default function MonitoramentoScreen() {
 
       <FlatList
         data={sensores}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={{ marginVertical: 10 }}>
             <Text>Sensor {item.id}</Text>
-            <Text>Nível da Água: {item.nivelAgua.toFixed(2)} m {item.nivelAgua > 5 ? 'ALERTA!' : ''}</Text>
-            <Text>Temperatura: {item.temperatura.toFixed(1)} °C</Text>
+            <Text>Nível da Água: {item.nivelAgua} m {item.nivelAgua > 5 ? 'ALERTA!' : ''}</Text>
+            <Text>Temperatura: {item.temperatura} °C</Text>
             <Text>Umidade: {item.umidade}%</Text>
           </View>
         )}
