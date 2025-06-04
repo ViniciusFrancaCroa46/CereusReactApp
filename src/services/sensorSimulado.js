@@ -11,8 +11,12 @@ export function isSimulacaoAtiva() {
 }
 
 function gerarValorAleatorio(sensor) {
-  sensor.nivelAgua = Math.random() < 0.8 ? (Math.random() * 5) : (5 + Math.random() * 5);
-  sensor.temperatura = 15 + Math.random() * 21;
+ sensor.nivelAgua = Math.random() < 0.8 
+    ? Math.round(Math.random() * 500) / 100   // 0.00 - 5.00 m
+    : Math.round((5 + Math.random() * 5) * 100) / 100;  // 5.00 - 10.00 m
+
+  sensor.temperatura = Math.round((15 + Math.random() * 21) * 100) / 100;  // 15.00 - 36.00 °C
+
   sensor.umidade = Math.floor(40 + Math.random() * 60);
 }
 
@@ -22,7 +26,7 @@ export function iniciarSimulacao() {
   intervalo = setInterval(() => {
     sensores.forEach(gerarValorAleatorio);
     console.log("Valores atualizados: ", sensores);
-  }, 30000);  // 30 segundos
+  }, 60000);  // 60 segundos
 }
 
 export function pararSimulacao() {

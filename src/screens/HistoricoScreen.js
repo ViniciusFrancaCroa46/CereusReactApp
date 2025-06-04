@@ -19,21 +19,15 @@ export default function HistoricoScreen() {
       setSensores(sensores.data || []);
       setRegistros(alerta.data || []);
       setBarreiras(barreiras.data || []);
-      //console.log("Sensores:", sensores.data);
-      //console.log("Registros:", alerta.data);
-      //console.log("Barreiras:", barreiras.data);
+      console.log("Sensores:", sensores.data);
+      console.log("Registros:", alerta.data);
+      console.log("Barreiras:", barreiras.data);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // Função para formatar data/hora
-  const formatarData = (dataString) => {
-    if (!dataString) return 'Data não informada';
-    const data = new Date(dataString);
-    return `${data.toLocaleDateString()} ${data.toLocaleTimeString()}`;
-  };
-
+  
   return (
     <ScrollView style={{ padding: 20 }}>
       <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 10 }}>Registros dos Sensores</Text>
@@ -46,7 +40,7 @@ export default function HistoricoScreen() {
             Nível: {item.nivelAgua != null ? item.nivelAgua + ' m' : 'N/A'} | 
             Temp: {item.temperatura != null ? item.temperatura + ' °C' : 'N/A'} | 
             Umid: {item.umidade != null ? item.umidade + '%' : 'N/A'} | 
-            Registrado em: {formatarData(item.dataRegistro)}
+            Registrado em: {item.dataHora}
           </Text>
         )}
         ListEmptyComponent={<Text>Nenhum sensor registrado.</Text>}
@@ -58,12 +52,12 @@ export default function HistoricoScreen() {
       ) : (
         <FlatList
           data={registros}
-          keyExtractor={(item, index) => item?.id ? `alerta-${item.id}` : `alerta-${index}`}
+          keyExtractor={(item, index) => item?.id ? `alerta-${item}` : `alerta-${index}`}
           renderItem={({ item }) => (
             <Text style={{ color: 'red' }}>
-              ALERTA - ID: {item.id ?? 'N/A'} | Sensor {item.sensorId ?? 'N/A'}: 
-              {item.nivelAgua != null ? item.nivelAgua + ' m acima do limite!' : 'N/A'} | 
-              Registrado em: {formatarData(item.dataRegistro)}
+              ALERTA - ID: {item.id ?? 'N/A'} | Sensor {item.sensorAgua.id ?? 'N/A'}  
+              |{item.sensorAgua.nivelAgua != null ? item.sensorAgua.nivelAgua + ' m, passando do limite!' : 'N/A'} | 
+              Registrado em: {item.dataHora}
             </Text>
           )}
         />
@@ -76,7 +70,7 @@ export default function HistoricoScreen() {
         renderItem={({ item }) => (
           <Text>
             Barreira ID: {item.id ?? 'N/A'} - {item.ativada ? 'Ativada' : 'Desativada'} | 
-            Registrado em: {formatarData(item.dataRegistro)}
+            Registrado em: {item.dataHoraAtivacao}
           </Text>
         )}
         ListEmptyComponent={<Text>Nenhuma barreira cadastrada.</Text>}
