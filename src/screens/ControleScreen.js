@@ -1,4 +1,4 @@
-import { View, Text, Button, FlatList } from 'react-native';
+import { View, Text, Button, FlatList, Alert} from 'react-native';
 import { useState, useEffect } from 'react';
 import { monitoramentoService, barreiraService } from '../services/api';
 import { getSensores, iniciarSimulacao, pararSimulacao } from '../services/sensorSimulado';
@@ -33,10 +33,22 @@ export default function ControleScreen() {
 
   const enviarDados = async () => {
     try {
-      const res = await monitoramentoService.createSA(sensores);
-      Alert.alert("Sucesso", "Dados enviados para o backend!");
+      for (const sensor of sensores) {
+        const payload = {
+          nivelAgua: sensor.nivelAgua,
+          temperatura: sensor.temperatura,
+          umidade: sensor.umidade
+        };
+
+        console.log('Enviando:', payload);
+
+        await monitoramentoService.createSA(payload);
+      }
+
+      Alert.alert("Sucesso", "Todos os dados enviados para o backend!");
     } catch (err) {
-      console.error(err);
+      console.error('Erro ao enviar dados:', err);
+      Alert.alert("Erro", "Falha ao enviar dados.");
     }
   };
 
@@ -71,7 +83,7 @@ export default function ControleScreen() {
         data={barreiras}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Text>{item.id} - {item.ativada ? 'Ativada' : 'Desativada'}</Text>
+          <Text>{item.id} - {item.ativacao ? 'Ativada' : 'Desativada'}</Text>
         )}
       />
     </View>

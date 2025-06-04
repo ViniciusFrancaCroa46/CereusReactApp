@@ -69,7 +69,7 @@ export default function HistoricoScreen() {
         keyExtractor={(item, index) => item?.id ? item.id.toString() : index.toString()}
         renderItem={({ item }) => (
           <Text>
-            Barreira ID: {item.id ?? 'N/A'} - {item.ativada ? 'Ativada' : 'Desativada'} | 
+            Barreira ID: {item.id ?? 'N/A'} - {item.ativacao ? 'Ativada' : 'Desativada'} | 
             Registrado em: {item.dataHoraAtivacao}
           </Text>
         )}

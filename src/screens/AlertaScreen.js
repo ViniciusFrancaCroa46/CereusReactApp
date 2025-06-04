@@ -51,7 +51,7 @@ export default function AlertaScreen() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Text>
-            {item.id} - {item.ativada ? 'Ativada' : 'Desativada'}
+            {item.id} - {item.ativacao ? 'Ativada' : 'Desativada'}
           </Text>
         )}
       />

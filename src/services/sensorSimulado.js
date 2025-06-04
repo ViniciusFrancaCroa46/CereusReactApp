@@ -1,7 +1,7 @@
 let sensores = [
-  { id: 7, nivelAgua: 0, temperatura: 0, umidade: 0 },
-  { id: 8, nivelAgua: 0, temperatura: 0, umidade: 0 },
-  { id: 9, nivelAgua: 0, temperatura: 0, umidade: 0 },
+  { id: 1, nivelAgua: 0, temperatura: 0, umidade: 0 },
+  { id: 2, nivelAgua: 0, temperatura: 0, umidade: 0 },
+  { id: 3, nivelAgua: 0, temperatura: 0, umidade: 0 },
 ];
 
 let intervalo = null;
@@ -26,7 +26,7 @@ export function iniciarSimulacao() {
   intervalo = setInterval(() => {
     sensores.forEach(gerarValorAleatorio);
     console.log("Valores atualizados: ", sensores);
-  }, 60000);  // 60 segundos
+  }, 30000);  // 30 segundos
 }
 
 export function pararSimulacao() {
