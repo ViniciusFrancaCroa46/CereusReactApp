@@ -54,7 +54,7 @@ const MainTabs = () => {
                 component={ControleScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="devices" size={size} color={color} />
+                        <MaterialCommunityIcons name="dip-switch" size={size} color={color} />
                     ),
                 }}
             />
